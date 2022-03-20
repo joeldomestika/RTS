@@ -12,6 +12,8 @@ void ARTS_PlayerController::AddSelectedUnit(ARTS_Unit* Unit)
 {
 	if (IsValid(Unit) && !Unit->GetIsSelected())
 	{
+		UnselectBuilding();
+
 		SelectedUnits.AddUnique(Unit);
 		Unit->SetIsSelected(true);
 	}
@@ -26,6 +28,19 @@ void ARTS_PlayerController::RemoveSelectedUnit(ARTS_Unit* Unit)
 	}
 }
 
+void ARTS_PlayerController::ClearSelectedUnits()
+{
+	for (ARTS_Unit* Unit : SelectedUnits)
+	{
+		if (IsValid(Unit))
+		{
+			Unit->SetIsSelected(false);
+		}
+	}
+
+	SelectedUnits.Empty();
+}
+
 void ARTS_PlayerController::MoveSelectedUnits(FVector Location)
 {
 	for (ARTS_Unit* Unit : SelectedUnits)
@@ -34,5 +49,27 @@ void ARTS_PlayerController::MoveSelectedUnits(FVector Location)
 		{
 			Unit->MovedUnit(Location);
 		}
+	}
+}
+
+void ARTS_PlayerController::SelecteBuilding(ARTS_Building* Building)
+{
+	if (IsValid(Building))
+	{
+		ClearSelectedUnits();
+
+		// Previously selected building
+		UnselectBuilding();
+
+		Building->SetIsSelected(true);
+		SelectedBuilding = Building;
+	}
+}
+
+void ARTS_PlayerController::UnselectBuilding()
+{
+	if (IsValid(SelectedBuilding))
+	{
+		SelectedBuilding->SetIsSelected(false);
 	}
 }

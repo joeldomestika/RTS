@@ -7,6 +7,8 @@
 #include "Components/DecalComponent.h"
 #include "RTS_Unit.generated.h"
 
+// Base unit implementation
+
 UCLASS()
 class RTS_API ARTS_Unit : public ACharacter
 {
