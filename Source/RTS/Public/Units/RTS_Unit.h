@@ -46,5 +46,5 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void MovedUnit(FVector Location);
+	void MoveUnit(FVector Location);
 };

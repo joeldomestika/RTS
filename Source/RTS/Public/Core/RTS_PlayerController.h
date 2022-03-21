@@ -37,7 +37,7 @@ public:
 
 	// Select a Building
 	UFUNCTION(BlueprintCallable)
-	void SelecteBuilding(ARTS_Building* Building);
+	void SelectBuilding(ARTS_Building* Building);
 
 	// Unselect the Building
 	UFUNCTION(BlueprintCallable)

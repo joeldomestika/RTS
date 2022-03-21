@@ -47,12 +47,12 @@ void ARTS_PlayerController::MoveSelectedUnits(FVector Location)
 	{
 		if (IsValid(Unit))
 		{
-			Unit->MovedUnit(Location);
+			Unit->MoveUnit(Location);
 		}
 	}
 }
 
-void ARTS_PlayerController::SelecteBuilding(ARTS_Building* Building)
+void ARTS_PlayerController::SelectBuilding(ARTS_Building* Building)
 {
 	if (IsValid(Building))
 	{
