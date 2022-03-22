@@ -60,4 +60,7 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void RemoveBuildingWidget();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void SetupUI();
 };

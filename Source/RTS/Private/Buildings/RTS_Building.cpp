@@ -66,6 +66,7 @@ void ARTS_Building::AddBuildingWidget()
 		if (IsValid(BuildingWidget))
 		{
 			BuildingWidget->AddToViewport();
+			SetupUI();
 		}
 	}
 }

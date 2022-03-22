@@ -69,6 +69,7 @@ void ARTS_Resources::AddResourcesWidget()
 		if (IsValid(ResourcesWidget))
 		{
 			ResourcesWidget->AddToViewport();
+			SetupUI();
 		}
 	}
 }
@@ -78,6 +79,16 @@ void ARTS_Resources::RemoveResourcesWidget()
 	if (IsValid(ResourcesWidget))
 	{
 		ResourcesWidget->RemoveFromViewport();
+	}
+}
+
+void ARTS_Resources::ConsumeResources(int ResourcesConsumed)
+{
+	CurrentResources -= ResourcesConsumed;
+
+	if (CurrentResources <= 0)
+	{
+		Destroy();
 	}
 }
 

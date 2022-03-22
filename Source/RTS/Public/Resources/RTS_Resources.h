@@ -78,4 +78,15 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void RemoveResourcesWidget();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void SetupUI();
+
+	// Consumes resources
+	UFUNCTION(BlueprintCallable)
+	void ConsumeResources(int ResourcesConsumed);
+
+	// Obtain the current Resources
+	UFUNCTION(BlueprintCallable)
+	int GetResources() { return CurrentResources; }
+
 };
