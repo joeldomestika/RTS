@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/DecalComponent.h"
+#include "Components/HealthComponent.h"
 #include "Blueprint/UserWidget.h"
 #include "RTS_Building.generated.h"
 
@@ -25,6 +26,9 @@ protected:
 
 	// This Unit is selected ?
 	bool bIsSelected;
+
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+	UHealthComponent* HealthComponent;
 
 	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
 	USceneComponent* BuildingRootComponent;
@@ -62,5 +66,5 @@ public:
 	void RemoveBuildingWidget();
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void SetupUI();
+	void BP_SetupUI();
 };

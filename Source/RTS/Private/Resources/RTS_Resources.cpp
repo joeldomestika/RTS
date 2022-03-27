@@ -69,7 +69,7 @@ void ARTS_Resources::AddResourcesWidget()
 		if (IsValid(ResourcesWidget))
 		{
 			ResourcesWidget->AddToViewport();
-			SetupUI();
+			BP_SetupUI();
 		}
 	}
 }

@@ -47,7 +47,7 @@ void ARTS_PlayerController::MoveSelectedUnits(FVector Location)
 	{
 		if (IsValid(Unit))
 		{
-			Unit->MoveUnit(Location);
+			Unit->BP_MoveUnit(Location);
 		}
 	}
 }

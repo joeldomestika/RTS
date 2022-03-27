@@ -12,6 +12,8 @@ ARTS_Unit::ARTS_Unit()
 	DecalComponent = CreateDefaultSubobject<UDecalComponent>(TEXT("DecalComponent"));
 	DecalComponent->SetVisibility(false);
 	DecalComponent->SetupAttachment(RootComponent);
+
+	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("HealthComponent"));
 }
 
 // Called when the game starts or when spawned

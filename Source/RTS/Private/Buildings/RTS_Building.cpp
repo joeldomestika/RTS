@@ -19,6 +19,8 @@ ARTS_Building::ARTS_Building()
 	DecalComponent = CreateDefaultSubobject<UDecalComponent>(TEXT("DecalComponent"));
 	DecalComponent->SetVisibility(false);
 	DecalComponent->SetupAttachment(RootComponent);
+
+	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("HealthComponent"));
 }
 
 // Called when the game starts or when spawned
@@ -66,7 +68,7 @@ void ARTS_Building::AddBuildingWidget()
 		if (IsValid(BuildingWidget))
 		{
 			BuildingWidget->AddToViewport();
-			SetupUI();
+			BP_SetupUI();
 		}
 	}
 }

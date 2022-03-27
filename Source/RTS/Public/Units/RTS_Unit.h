@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Components/DecalComponent.h"
+#include "Components/HealthComponent.h"
 #include "RTS_Unit.generated.h"
 
 // Base unit implementation
@@ -26,6 +27,9 @@ protected:
 	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
 	UDecalComponent* DecalComponent;
 
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+	UHealthComponent* HealthComponent;
+
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
@@ -46,5 +50,5 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void MoveUnit(FVector Location);
+	void BP_MoveUnit(FVector Location);
 };

@@ -79,7 +79,7 @@ public:
 	void RemoveResourcesWidget();
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void SetupUI();
+	void BP_SetupUI();
 
 	// Consumes resources
 	UFUNCTION(BlueprintCallable)
