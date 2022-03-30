@@ -25,6 +25,9 @@ enum class ETeam : uint8
 	NONE UMETA(DisplayName = "None"), // No team
 };
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDeath, bool, bIsDead);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHealthChanged, float, NewHealth);
+
 // Component to handle health
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class RTS_API UHealthComponent : public UActorComponent
@@ -62,6 +65,13 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
+
+	UPROPERTY(BlueprintReadWrite, BlueprintAssignable)
+	FOnDeath OnDeath;
+
+	UPROPERTY(BlueprintReadWrite, BlueprintAssignable)
+	FOnHealthChanged OnHealthChanged;
+
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
@@ -82,7 +92,4 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	bool AddDamage(float Damage, ECombatType OpponentCombatType = ECombatType::NONE, ETeam OpponentTeam = ETeam::COMPUTER);
-
-	UFUNCTION(BlueprintImplementableEvent)
-	void BP_OnDeath();
 };

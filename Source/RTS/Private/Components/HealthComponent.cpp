@@ -70,13 +70,15 @@ bool UHealthComponent::AddDamage(float Damage, ECombatType OpponentCombatType /*
 
 	Health = Health - CombatMultiplier * Damage;
 
+	OnHealthChanged.Broadcast(Health);
+
 	if (Health < 0)
 	{
 		Health = 0;
 
 		bIsDeath = true;
 
-		BP_OnDeath();
+		OnDeath.Broadcast(bIsDeath);
 	}
 
 	return bIsDeath;
