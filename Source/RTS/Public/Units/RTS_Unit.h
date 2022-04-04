@@ -19,6 +19,21 @@ public:
 	// Sets default values for this character's properties
 	ARTS_Unit();
 
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "Description")
+	FString Name;
+
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "Description")
+	FString Description;
+
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "Description")
+	int CostWood;
+
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "Description")
+	int CostFood;
+
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "Description")
+	int CostStone;
+
 protected:
 
 	// This Unit is selected ?

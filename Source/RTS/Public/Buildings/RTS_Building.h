@@ -20,6 +20,21 @@ public:
 	// Sets default values for this actor's properties
 	ARTS_Building();
 
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "Description")
+	FString Name;
+
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "Description")
+	FString Description;
+
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "Description")
+	int CostWood;
+
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "Description")
+	int CostFood;
+
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "Description")
+	int CostStone;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

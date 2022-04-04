@@ -21,6 +21,13 @@ ARTS_Building::ARTS_Building()
 	DecalComponent->SetupAttachment(RootComponent);
 
 	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("HealthComponent"));
+
+	Name = "Building";
+	Description = "Building";
+
+	CostFood = 0;
+	CostWood = 0;
+	CostStone = 0;
 }
 
 // Called when the game starts or when spawned

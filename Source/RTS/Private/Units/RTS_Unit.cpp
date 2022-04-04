@@ -14,6 +14,13 @@ ARTS_Unit::ARTS_Unit()
 	DecalComponent->SetupAttachment(RootComponent);
 
 	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("HealthComponent"));
+
+	Name = "Unit";
+	Description = "Unit";
+
+	CostFood = 0;
+	CostWood = 0;
+	CostStone = 0;
 }
 
 // Called when the game starts or when spawned

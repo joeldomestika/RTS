@@ -15,7 +15,7 @@ UHealthComponent::UHealthComponent()
 	bIsDeath = false;
 
 	WeakCombatMultiplier = 0.5f;
-	StrongCombatMultiplier = 1.5f;
+	StrongCombatMultiplier = 4.0f;
 
 	Team = ETeam::PLAYER;
 }
@@ -43,17 +43,17 @@ float UHealthComponent::GetCombatMultiplier(ECombatType OpponentCombatType)
 {
 	if (CombatType == OpponentCombatType) return 1.0f;
 
-	if (CombatType == ECombatType::ARMORED && CombatType == ECombatType::ANTIARMOR) return WeakCombatMultiplier;
+	if (OpponentCombatType == ECombatType::ARMORED && CombatType == ECombatType::ANTIARMOR) return WeakCombatMultiplier;
 
-	if (CombatType == ECombatType::ARMORED && CombatType == ECombatType::REGULAR) return StrongCombatMultiplier;
+	if (OpponentCombatType == ECombatType::ARMORED && CombatType == ECombatType::REGULAR) return StrongCombatMultiplier;
 
-	if (CombatType == ECombatType::REGULAR && CombatType == ECombatType::ANTIARMOR) return StrongCombatMultiplier;
+	if (OpponentCombatType == ECombatType::REGULAR && CombatType == ECombatType::ANTIARMOR) return StrongCombatMultiplier;
 
-	if (CombatType == ECombatType::REGULAR && CombatType == ECombatType::ARMORED) return WeakCombatMultiplier;
+	if (OpponentCombatType == ECombatType::REGULAR && CombatType == ECombatType::ARMORED) return WeakCombatMultiplier;
 
-	if (CombatType == ECombatType::ANTIARMOR && CombatType == ECombatType::ARMORED) return StrongCombatMultiplier;
+	if (OpponentCombatType == ECombatType::ANTIARMOR && CombatType == ECombatType::ARMORED) return StrongCombatMultiplier;
 
-	if (CombatType == ECombatType::ANTIARMOR && CombatType == ECombatType::REGULAR) return WeakCombatMultiplier;
+	if (OpponentCombatType == ECombatType::ANTIARMOR && CombatType == ECombatType::REGULAR) return WeakCombatMultiplier;
 
 	return 1.0f;
 }
