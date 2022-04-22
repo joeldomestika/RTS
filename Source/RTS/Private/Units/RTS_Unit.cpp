@@ -21,6 +21,8 @@ ARTS_Unit::ARTS_Unit()
 	CostFood = 0;
 	CostWood = 0;
 	CostStone = 0;
+
+	ConstructionTime = 3;
 }
 
 // Called when the game starts or when spawned

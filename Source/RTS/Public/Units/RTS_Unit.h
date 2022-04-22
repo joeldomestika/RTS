@@ -6,12 +6,13 @@
 #include "GameFramework/Character.h"
 #include "Components/DecalComponent.h"
 #include "Components/HealthComponent.h"
+#include "GameplayTagAssetInterface.h"
 #include "RTS_Unit.generated.h"
 
 // Base unit implementation
 
 UCLASS()
-class RTS_API ARTS_Unit : public ACharacter
+class RTS_API ARTS_Unit : public ACharacter, public IGameplayTagAssetInterface
 {
 	GENERATED_BODY()
 
@@ -34,16 +35,27 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "Description")
 	int CostStone;
 
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "Description")
+	float ConstructionTime;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "GameplayTags")
+	FGameplayTagContainer GameplayTags;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UHealthComponent* HealthComponent;
+
+	UFUNCTION(BlueprintCallable, Category = "GameplayTags")
+	virtual void GetOwnedGameplayTags(FGameplayTagContainer& TagContainer) const override { TagContainer = GameplayTags; }
+
 protected:
 
 	// This Unit is selected ?
 	bool bIsSelected;
 
-	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	UDecalComponent* DecalComponent;
 
-	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
-	UHealthComponent* HealthComponent;
+
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

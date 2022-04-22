@@ -7,12 +7,14 @@
 #include "Components/DecalComponent.h"
 #include "Components/HealthComponent.h"
 #include "Blueprint/UserWidget.h"
+#include "GameplayTagAssetInterface.h"
 #include "RTS_Building.generated.h"
+
 
 // Base building implementation
 
 UCLASS()
-class RTS_API ARTS_Building : public AActor
+class RTS_API ARTS_Building : public AActor, public IGameplayTagAssetInterface
 {
 	GENERATED_BODY()
 	
@@ -35,6 +37,18 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "Description")
 	int CostStone;
 
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly, Category = "Description")
+	float ConstructionTime;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "GameplayTags")
+	FGameplayTagContainer GameplayTags;
+
+	UFUNCTION(BlueprintCallable, Category = "GameplayTags")
+	virtual void GetOwnedGameplayTags(FGameplayTagContainer& TagContainer) const override { TagContainer= GameplayTags; }
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UHealthComponent* HealthComponent;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -43,15 +57,12 @@ protected:
 	bool bIsSelected;
 
 	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
-	UHealthComponent* HealthComponent;
-
-	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
 	USceneComponent* BuildingRootComponent;
 
-	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	UDecalComponent* DecalComponent;
 
-	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	UStaticMeshComponent* BuildingMesh;
 
 	UPROPERTY(EditAnywhere)
