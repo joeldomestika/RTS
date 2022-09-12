@@ -8,6 +8,8 @@
 #include "Buildings/RTS_Building.h"
 #include "RTS_PlayerController.generated.h"
 
+class ARTS_HUD;
+
 /**
  * 
  */
@@ -19,6 +21,8 @@ class RTS_API ARTS_PlayerController : public APlayerController
 public:
 
 	ARTS_PlayerController();
+
+	virtual void BeginPlay() override;
 
 	// Adding a newly selected unit
 	UFUNCTION(BlueprintCallable)
@@ -44,6 +48,9 @@ public:
 	void UnselectBuilding();
 
 protected:
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	ARTS_HUD* Hud;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	TArray<ARTS_Unit*> SelectedUnits;

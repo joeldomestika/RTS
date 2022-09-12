@@ -55,8 +55,6 @@ protected:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	UDecalComponent* DecalComponent;
 
-
-
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
@@ -78,4 +76,7 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void BP_MoveUnit(FVector Location);
+
+	UFUNCTION()
+	ETeam GetTeam();
 };

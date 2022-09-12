@@ -1,11 +1,18 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
+#include "UI/RTS_HUD.h"
 #include "Core/RTS_PlayerController.h"
 
 ARTS_PlayerController::ARTS_PlayerController()
 {
 	bEnableClickEvents = true;
+}
+
+void ARTS_PlayerController::BeginPlay()
+{
+	Super::BeginPlay();
+
+	Hud = Cast<ARTS_HUD>(GetHUD());
 }
 
 void ARTS_PlayerController::AddSelectedUnit(ARTS_Unit* Unit)

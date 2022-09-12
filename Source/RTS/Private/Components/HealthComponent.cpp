@@ -84,3 +84,8 @@ bool UHealthComponent::AddDamage(float Damage, ECombatType OpponentCombatType /*
 	return bIsDeath;
 }
 
+ETeam UHealthComponent::GetTeam()
+{
+	return Team;
+}
+

@@ -92,4 +92,7 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	bool AddDamage(float Damage, ECombatType OpponentCombatType = ECombatType::NONE, ETeam OpponentTeam = ETeam::COMPUTER);
+
+	UFUNCTION(BlueprintCallable)
+	ETeam GetTeam();
 };

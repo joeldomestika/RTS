@@ -52,3 +52,8 @@ void ARTS_Unit::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 }
 
+ETeam ARTS_Unit::GetTeam()
+{
+	return HealthComponent->GetTeam();
+}
+
